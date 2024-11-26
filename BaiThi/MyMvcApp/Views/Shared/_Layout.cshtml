@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Comic System</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                
+                <!-- Liên kết đến các trang ComicBooks -->
+                <li><a asp-controller="ComicBooks" asp-action="Index">Comic Books</a></li>
+                
+                <!-- Liên kết đến các trang Customers -->
+                <li><a asp-controller="Customers" asp-action="Index">Customers</a></li>
+                <!-- Liên kết đến các trang Rentals -->
+                <li><a asp-controller="Rentals" asp-action="Index">Rentals</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody() <!-- Nội dung cụ thể của các view sẽ được hiển thị tại đây -->
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Comic System</p>
+    </footer>
+</body>
+</html>
