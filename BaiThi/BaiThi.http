@@ -1,0 +1,6 @@
+@BaiThi_HostAddress = http://localhost:5225
+
+GET {{BaiThi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
