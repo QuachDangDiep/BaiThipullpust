@@ -1,18 +1,18 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using baithi.Data;
+using ComicSystem.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Thêm dịch vụ MVC
+// Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Đăng ký ComicSystemMemoryDbContext làm dịch vụ singleton
-builder.Services.AddSingleton<ComicSystemMemoryDbContext>();
+builder.Services.AddDbContext<ComicSystemContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("ComicSystemDatabase"),
+                     new MySqlServerVersion(new Version(8, 0, 32))));
 
 var app = builder.Build();
 
-// Cấu hình middleware
+// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -26,9 +26,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-// Định tuyến mặc định
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=ComicBooks}/{action=Index}/{id?}");
 
 app.Run();
