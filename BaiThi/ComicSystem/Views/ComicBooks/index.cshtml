@@ -1,0 +1,21 @@
+@model IEnumerable<ComicBook>
+
+<h1>Danh sách Comic Books</h1>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price Per Day</th>
+    </tr>
+    @foreach (var comic in Model)
+    {
+        <tr>
+            <td>@comic.Title</td>
+            <td>@comic.Author</td>
+            <td>@comic.PricePerDay</td>
+        </tr>
+    }
+</table>
+
+<a href="/ComicBooks/Create">Thêm mới</a>

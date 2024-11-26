@@ -1,0 +1,22 @@
+@model Rental
+
+<h1>Thuê sách</h1>
+
+<form method="post">
+    <label>Khách hàng:</label>
+    @Html.DropDownList("customerId", ViewBag.Customers as SelectList)
+    <br>
+    <label>Sách truyện:</label>
+    @Html.DropDownList("comicBookId", ViewBag.ComicBooks as SelectList)
+    <br>
+    <label>Ngày thuê:</label>
+    <input type="date" name="rentalDate" />
+    <br>
+    <label>Ngày trả:</label>
+    <input type="date" name="returnDate" />
+    <br>
+    <label>Số lượng:</label>
+    <input type="number" name="quantity" />
+    <br>
+    <button type="submit">Thuê</button>
+</form>
